@@ -3,8 +3,9 @@ import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import DotenvWebpackPlugin from 'dotenv-webpack';
-import prod from './webpack.prod.config';
-import dev from './webpack.dev.config';
+import prod from './webpack.prod.config.ts';
+import dev from './webpack.dev.config.ts';
+import { __dirname } from './webpack.dev.config.ts';
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -16,7 +17,7 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.tsx?$/,
+                test: /\.ts?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },

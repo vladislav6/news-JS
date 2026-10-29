@@ -9,8 +9,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
-    "target": "es2025",
+    "module": "ESNext",
+    "target": "ES2020",
     // "types": [],
     // For nodejs:
     "lib": ["DOM", "ESNext", "DOM.iterable"],
@@ -42,6 +42,8 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   }
 }
