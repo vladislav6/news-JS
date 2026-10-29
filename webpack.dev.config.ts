@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'node:path';
 
-module.exports = {
+export default {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
