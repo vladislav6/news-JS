@@ -9,7 +9,7 @@ type Source = {
 };
 
 type Article = {
-  source: Source;
+  source: Pick<Source, 'id' | 'name'>;
   author: string | null;
   title: string;
   description: string | null;
