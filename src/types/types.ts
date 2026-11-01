@@ -8,7 +8,7 @@ type Source = {
   country: string;
 };
 
-type Article = {
+export type Article = {
   source: Pick<Source, 'id' | 'name'>;
   author: string | null;
   title: string;
