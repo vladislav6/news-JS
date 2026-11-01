@@ -1,8 +1,10 @@
 import AppLoader from './appLoader';
 import { endpointAPI } from '../../types/enums';
+import type { Sources, Everything } from '../../types/types';
+import type { IAppController } from '../../types/interfaces';
 
-class AppController extends AppLoader {
-    getSources(callback: () => void): void {
+class AppController extends AppLoader implements IAppController {
+    getSources(callback: (data: Sources) => void | undefined): void {
         super.getResp(
             {
                 endpoint: endpointAPI.SOURCE,
@@ -11,7 +13,10 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: PointerEvent, callback: () => void): void | undefined {
+    getNews(
+        e: PointerEvent,
+        callback: (data: Everything) => void | undefined
+    ): void | undefined {
         let target: EventTarget | null = e.target;
         const newsContainer = e.currentTarget;
 
