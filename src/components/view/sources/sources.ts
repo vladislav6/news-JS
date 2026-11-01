@@ -3,7 +3,7 @@ import type { idNameSource } from '../../../types/types';
 import './sources.css';
 
 class Sources implements ISources {
-    draw(data: idNameSource[]): void | undefined {
+    public draw(data: idNameSource[]): void | undefined {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
         const sources: HTMLTemplateElement | null = document.querySelector('.sources');

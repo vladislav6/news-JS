@@ -1,15 +1,15 @@
-import type { IEndpointOptions, IOptions, IApiKey, ILoader } from "../../types/interfaces";
+import type { IEndpointOptions, IOptions, IApiKey } from "../../types/interfaces";
 
-class Loader implements ILoader {
-    baseLink: string;
-    options: IApiKey;
+class Loader {
+    private readonly baseLink: string;
+    private readonly options: IApiKey;
 
     constructor(baseLink: string, options: IApiKey) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp<T>(
+    protected getResp<T>(
         { endpoint, options = {} }: IEndpointOptions,
         callback: (data: T) => void = () => {
             console.error('No callback for GET response');
@@ -18,7 +18,7 @@ class Loader implements ILoader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: Response): Response {
+    private errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -28,7 +28,7 @@ class Loader implements ILoader {
         return res;
     }
 
-    makeUrl(options: IOptions, endpoint: string): string {
+    private makeUrl(options: IOptions, endpoint: string): string {
         const urlOptions: Record<string, string | undefined> = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -39,7 +39,7 @@ class Loader implements ILoader {
         return url.slice(0, -1);
     }
 
-    load<T>(
+    private load<T>(
         method: string,
         endpoint: string,
         callback: (data: T) => void,

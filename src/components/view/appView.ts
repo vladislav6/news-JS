@@ -4,20 +4,20 @@ import News from './news/news';
 import Sources from './sources/sources';
 
 export class AppView implements IAppView {
-    news: INews;
-    sources: ISources;
+    private readonly news: INews;
+    private readonly sources: ISources;
 
     constructor() {
         this.news = new News();
         this.sources = new Sources();
     }
 
-    drawNews(data: Everything): void {
+    public drawNews(data: Everything): void {
         const values = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data: SourcesType) {
+    public drawSources(data: SourcesType) {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }

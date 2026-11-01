@@ -4,15 +4,15 @@ import type { IApp, IAppController, IAppView } from '../../types/interfaces';
 import type { SourcesType, Everything } from '../../types/types';
 
 class App implements IApp {
-    controller: IAppController;
-    view: IAppView;
+    private readonly controller: IAppController;
+    private readonly view: IAppView;
     
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start(): void {
+    public start(): void {
         const sourcesDiv = document.querySelector('.sources') as HTMLDivElement;
         if (!sourcesDiv) return;
         sourcesDiv

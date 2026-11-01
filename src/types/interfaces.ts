@@ -13,22 +13,6 @@ export interface IApp {
     start: () => void;
 }
 
-export interface ILoader {
-    getResp: <T>(
-        { endpoint, options}: IEndpointOptions,
-        callback: (data: T) => void
-    ) => void;
-    errorHandler: (res: Response) => Response;
-
-    makeUrl: (options: IOptions, endpoint: string) => string;
-    load: <T>(
-        method: string,
-        endpoint: string,
-        callback: (data: T) => void,
-        options: IOptions
-    ) => void;
-}
-
 export interface IApiKey {
   apiKey: string | undefined;
 }

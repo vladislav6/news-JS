@@ -3,7 +3,7 @@ import type { INews } from '../../../types/interfaces';
 import type { Article } from '../../../types/types';
 
 class News implements INews {
-    draw(data: Article[]): void | undefined {
+    public draw(data: Article[]): void | undefined {
         const news: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();

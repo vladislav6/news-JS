@@ -4,7 +4,7 @@ import type { SourcesType, Everything } from '../../types/types';
 import type { IAppController } from '../../types/interfaces';
 
 class AppController extends AppLoader implements IAppController {
-    getSources(callback: (data: SourcesType) => void | undefined): void {
+    public getSources(callback: (data: SourcesType) => void | undefined): void {
         super.getResp(
             {
                 endpoint: endpointAPI.SOURCE,
@@ -13,7 +13,7 @@ class AppController extends AppLoader implements IAppController {
         );
     }
 
-    getNews(
+    public getNews(
         e: PointerEvent,
         callback: (data: Everything) => void | undefined
     ): void | undefined {
