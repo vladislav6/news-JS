@@ -1,12 +1,12 @@
-import type { Everything, Sources, Article } from "../types/types";
+import type { Everything, SourcesType, Article, idNameSource } from "../types/types";
 
 export interface IAppController {
   getNews: (e: PointerEvent, callback: (data: Everything) => void) => void;
-  getSources: (callback: (data: Sources) => void) => void;
+  getSources: (callback: (data: SourcesType) => void) => void;
 }
 export interface IAppView {
   drawNews: (data: Everything) => void;
-  drawSources: (data: Sources) => void;
+  drawSources: (data: SourcesType) => void;
 }
 
 export interface IApp {
@@ -44,4 +44,13 @@ export interface IEndpointOptions {
 
 export interface INews {
   draw: (data: Article[]) => void | undefined;
+}
+
+export interface ISources {
+  draw: (data: idNameSource[]) => void | undefined;
+}
+
+export interface IAppView {
+  drawNews: (data: Everything) => void;
+  drawSources: (data: SourcesType) => void;
 }

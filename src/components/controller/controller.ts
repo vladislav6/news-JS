@@ -1,10 +1,10 @@
 import AppLoader from './appLoader';
 import { endpointAPI } from '../../types/enums';
-import type { Sources, Everything } from '../../types/types';
+import type { SourcesType, Everything } from '../../types/types';
 import type { IAppController } from '../../types/interfaces';
 
 class AppController extends AppLoader implements IAppController {
-    getSources(callback: (data: Sources) => void | undefined): void {
+    getSources(callback: (data: SourcesType) => void | undefined): void {
         super.getResp(
             {
                 endpoint: endpointAPI.SOURCE,

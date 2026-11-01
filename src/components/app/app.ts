@@ -1,7 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import type { IApp, IAppController, IAppView } from '../../types/interfaces';
-import type { Sources, Everything } from '../../types/types';
+import type { SourcesType, Everything } from '../../types/types';
 
 class App implements IApp {
     controller: IAppController;
@@ -17,7 +17,7 @@ class App implements IApp {
         if (!sourcesDiv) return;
         sourcesDiv
             .addEventListener('click', (e: PointerEvent) => this.controller.getNews(e, (data: Everything) => this.view.drawNews(data)));
-        this.controller.getSources((data: Sources) => this.view.drawSources(data));
+        this.controller.getSources((data: SourcesType) => this.view.drawSources(data));
     }
 }
 

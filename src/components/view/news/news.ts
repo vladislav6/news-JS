@@ -8,33 +8,31 @@ class News implements INews {
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
-
-        if (!newsItemTemp) return;
-        
-        const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
         const newsElement: HTMLElement | null = document.querySelector('.news');
-        const newsItem: HTMLElement | null = newsClone.querySelector('.news__item');
-        const newsMetaPhoto: HTMLElement | null = newsClone.querySelector('.news__meta-photo');
-        const newsMetaAuthor: HTMLElement | null = newsClone.querySelector('.news__meta-author');
-        const newsMetadate: HTMLElement | null = newsClone.querySelector('.news__meta-date');
-        const newsDescTitle: HTMLElement | null = newsClone.querySelector('.news__description-title');
-        const newsDescSource: HTMLElement | null = newsClone.querySelector('.news__description-source');
-        const newsDescContent: HTMLElement | null = newsClone.querySelector('.news__description-content');
-        const newsReadMore: HTMLElement | null = newsClone.querySelector('.news__read-more a');
+        if (!(newsItemTemp && newsElement)) return;
         
-        if (!(
-            newsItem &&
-            newsMetaPhoto &&
-            newsMetaAuthor &&
-            newsMetadate &&
-            newsDescTitle &&
-            newsDescSource &&
-            newsDescContent &&
-            newsReadMore &&
-            newsElement
-        )) return;
-
         news.forEach((item, idx) => {
+            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
+            const newsItem: HTMLElement | null = newsClone.querySelector('.news__item');
+            const newsMetaPhoto: HTMLElement | null = newsClone.querySelector('.news__meta-photo');
+            const newsMetaAuthor: HTMLElement | null = newsClone.querySelector('.news__meta-author');
+            const newsMetadate: HTMLElement | null = newsClone.querySelector('.news__meta-date');
+            const newsDescTitle: HTMLElement | null = newsClone.querySelector('.news__description-title');
+            const newsDescSource: HTMLElement | null = newsClone.querySelector('.news__description-source');
+            const newsDescContent: HTMLElement | null = newsClone.querySelector('.news__description-content');
+            const newsReadMore: HTMLElement | null = newsClone.querySelector('.news__read-more a');
+            
+            if (!(
+                newsItem &&
+                newsMetaPhoto &&
+                newsMetaAuthor &&
+                newsMetadate &&
+                newsDescTitle &&
+                newsDescSource &&
+                newsDescContent &&
+                newsReadMore
+            )) return;
+
             if (idx % 2) newsItem.classList.add('alt');
 
             newsMetaPhoto.style.backgroundImage = `url(${

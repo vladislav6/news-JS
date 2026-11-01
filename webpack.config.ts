@@ -1,11 +1,11 @@
-import path from 'node:path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import DotenvWebpackPlugin from 'dotenv-webpack';
-import prod from './webpack.prod.config.ts';
-import dev from './webpack.dev.config.ts';
-import { __dirname } from './webpack.dev.config.ts';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -40,9 +40,10 @@ const baseConfig = {
     ],
 };
 
-export default ({ mode }: { mode: string }) => {
+export default async ({ mode }: { mode: string }) => {
     const isProductionMode = mode === 'prod';
-    const envConfig = isProductionMode ? prod : dev;
+    const configPath = isProductionMode ? './webpack.prod.config.ts' : './webpack.dev.config.ts';
+    const { default: envConfig } = await import(new URL(configPath, import.meta.url).href);
 
     return merge(baseConfig, envConfig);
 };
