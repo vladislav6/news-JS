@@ -1,14 +1,25 @@
-.sources {
-    display: flex;
-    flex-wrap: nowrap;
+.textParagraph {
     width: 100%;
-    height: 120px;
-    overflow: auto;
-    align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
 }
 
-.source__item {
+.sources,
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: auto;
+    align-items: center;
+    font:
+        300 1em 'Fira Sans',
+        sans-serif;
+    border-bottom: 1px solid #ffffff;
+}
+
+.source__item,
+.catList {
     background: none;
     border: 2px solid #30c5ff;
     font: inherit;
@@ -21,7 +32,9 @@
 }
 
 .source__item:hover,
-.source__item:focus {
+.source__item:focus,
+.catList:hover,
+.catList:focus {
     border-color: #3fcc59;
     color: #69db7e;
     box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
@@ -31,4 +44,11 @@
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+
+@media (max-width: 450px) {
+    .sources,
+    .cats { 
+        font-size: 0.7em;
+    }
 }
