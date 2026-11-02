@@ -9,16 +9,34 @@
     <body>
         <header>
             <h1>News Portal</h1>
+            <div class="cats buttons"></div>
         </header>
         <main>
-            <div class="sources buttons"></div>
-            <div class="news"></div>
+            <div class="conteiner">
+                <div class="sources buttons"></div>
+                <div class="news"></div>
+            </div>
         </main>
         <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
+            <div class="copyright">Copyright <a href="https://newsapi.org">NewsAPI</a></div>
+            <div class="conteiner about">
+                <div>
+                <a href="https://rs.school/courses/javascript" target="_blank">
+                    <img src="https://rs.school/_next/static/media/rss-logo.c19ce1b4.svg" width="100" height="100" alt="rss-logo">
+                </a>
+                </div>
+                <div>2026</div>
+                <div>
+                <a href="https://github.com/vladislav6" target="_blank">
+                    <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png" width="100" height="100" alt="gh">
+                </a>
+                </div>
+            </div>
         </footer>
+
+        <template id="sourceCatItemTemp">
+            <div class="catList"></div>
+        </template>
 
         <template id="sourceItemTemp">
             <div class="source__item">
