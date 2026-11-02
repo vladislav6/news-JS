@@ -13,13 +13,10 @@ class Sources implements ISources {
 
     private drawCat(data: idNameSource[], category: Set<string>): void | undefined {
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const pNewEl: HTMLParagraphElement = document.createElement('p');
-
         const sourceCatItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceCatItemTemp');
-        const divElSource: Element | null = document.querySelector('.sources');
         const divElCat: HTMLDivElement | null = document.querySelector('.cats');
 
-        if (!(sourceCatItemTemp && divElSource && divElCat)) return;
+        if (!(sourceCatItemTemp && divElCat)) return;
         
         category.forEach((val: string) => {
             const sourceCatClone = sourceCatItemTemp.content.cloneNode(true) as HTMLElement;
@@ -32,22 +29,18 @@ class Sources implements ISources {
             divElCat.append(fragment);
         });
         
-        
+        let catName = 'general';
         divElCat.addEventListener('click', (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             const catItem = target.closest<HTMLDivElement>('.catList');
             
             if (!catItem) return;
             
-            const catName = catItem.textContent;
-            if (catName) {
-                this.drawItem(data, catName);
-            }
+            catName = catItem.textContent;
+            this.drawItem(data, catName);
         });
-  
-        divElSource.prepend(pNewEl)
-        pNewEl.textContent = 'Select any category';
-        pNewEl.className = 'textParagraph';
+        
+        this.drawItem(data, catName);
     }
 
     private drawItem(data: idNameSource[], cat: string | undefined): void | undefined {
